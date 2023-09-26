@@ -1,9 +1,8 @@
-const Square = () => {
+export const Square = () => {
   return (
-    <div className="w-52 h-52 bg-orange-700 text-white">
-        este  componente foi importado 
-    </div>
+    <div className="w-52 h-52 bg-orange-700 text-white"></div>
   );
 }
 
-export default Square;
+
+// export default Quadrado;
