@@ -1,4 +1,5 @@
-import { Card } from "@/components/Card";
+import {peopleList} from '@/data/peopleList';
+import {Card} from "@/components/Card";
 
 
 const Page = () => {
@@ -6,7 +7,7 @@ const Page = () => {
   <div>
       <h1 className="font-bold text-xl">Children Componentes</h1>
       
-      <Card phase="Alguma Frase Top" />
+      
   </div>
   );
 };
