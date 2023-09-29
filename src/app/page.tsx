@@ -22,6 +22,4 @@ const Page = () => {
 export default Page;
 
 // Passando props para um componente. author="Coach de Milhões"
-
-
 // Definindo um valor padrão em props
