@@ -1,34 +1,29 @@
-import {peopleList} from '@/data/peopleList';
-
 const Page = () => {
-  // const list = peopleList.map(person => <li>{person.name}</li>)
-  const chemists = peopleList.filter(person => person.profession === 'cheminist');
-  return (
-  <div>
-      <h1 className="font-bold text-xl">React JS</h1>
-   
-      {/* {peopleList.length > 0 && 
-      <ul>
-        {peopleList.map(person => 
-        <li>{person.id} - {person.name} - {person.profession}</li>)}
-      </ul>
-      } */}
+  const fullTime = new Intl.DateTimeFormat('pt-BR',{
+    timeStyle:'short',
+    hour12: false
+  }).format();
 
-      {chemists.length > 0 &&
-        <>
-          <h3>Lista de Quimicos:</h3>
-          <ul>
-            {chemists.map(person =>
-              <li key={person.id}>{person.name}</li>
-              )}
-          </ul>
-        </>
-      }
+  const hour = new Date().getHours();
+  /** testando as horas 
+   const hour = 15;
+  */
+  let greeting = '0';
+
+  if(hour >=0 && hour < 12) {
+    greeting = 'Bom Dia 😀';
+  } else if (hour >= 12 && hour < 18) {
+    greeting = 'Boa Tarde 😎';
+  } else if(hour >= 18 && hour <= 24)  {
+    greeting = 'Boa Noite 😴';
+  }
+  return (
+  <div className="w-screen h-screen flex flex-col justify-center items-center
+  text-white bg-gradient-to-r from-sky-500 to-indigo-500">
+      <div className="text-9xl">{fullTime}</div>
+      <div className="text-5xl font-bold">{greeting}</div>
   </div>
   );
 };
 
 export default Page;
-
-// Passando props para um componente. author="Coach de Milhões"
-// Definindo um valor padrão em props
