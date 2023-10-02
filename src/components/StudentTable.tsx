@@ -26,7 +26,7 @@ export const StudentTable = ({ students }: Props) => {
               </div>
             </td>
             <td className="p-3">
-              {item.active && <div className="px-2 py-1 inline-block rounded-md border border-green-800 bg-green-600 text-white text-xs">Active</div>}
+              {item.active && <div className="px-3 py-1 inline-block rounded-md border border-green-800 bg-green-600 text-white text-xs">Active</div>}
               {!item.active && <div className="px-2 py-1 inline-block rounded-md border border-red-800 bg-red-600 text-white text-xs">Inactive</div>}
             </td>
 
