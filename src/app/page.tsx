@@ -29,7 +29,8 @@ const hour = new Date().getHours();
 export default Page;
 */
 
-import { EmojiRating } from "@/components/EmojiRating";
+//import { EmojiRating } from "@/components/EmojiRating";
+
 
 /** Exercício: Greeting condicional 2 
  * 
@@ -58,10 +59,15 @@ export default Page;
 */
 
 /** Exercício: Rating via emoji (fácil) | (dificil) */
+
+import { StudentTable } from "@/components/StudentTable";
+import { students } from "@/data/students";
+
 const Page = () => {
   return (
-  <div className="w-screen h-screen flex justify-center items-center">
-       <EmojiRating rate={2}/>
+  <div className="container mx-auto ">
+    <h1 className="text-5xl mb-5">Boletim Escolar 2023</h1>
+    <StudentTable students={students}/>
   </div>
   );
 }
