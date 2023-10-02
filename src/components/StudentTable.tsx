@@ -12,6 +12,8 @@ export const StudentTable = ({ students }: Props) => {
           <th className="p-3">Status</th>
           <th className="p-3">Nota 1</th>
           <th className="p-3">Nota 2</th>
+          <th className="p-3">Nota 3</th>
+          <th className="p-3">Nota 4</th>
           <th className="p-3">Nota Final</th>
         </tr>
       </thead>
@@ -32,9 +34,11 @@ export const StudentTable = ({ students }: Props) => {
 
             <td className="p-3">{item.grade1.toFixed(1)}</td>
             <td className="p-3">{item.grade2.toFixed(1)}</td>
+            <td className="p-3">{item.grade3.toFixed(1)}</td>
+            <td className="p-3">{item.grade4.toFixed(1)}</td>
             <td className="p-3 font-bold">
               {item.active
-                ? ((item.grade1 + item.grade2) / 2).toFixed(1)
+                ? ((item.grade1 + item.grade2 + item.grade3 + item.grade4) / 4).toFixed(1)
                 : "--"}
             </td>
           </tr>
