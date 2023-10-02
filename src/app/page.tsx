@@ -57,11 +57,11 @@ import { EmojiRating } from "@/components/EmojiRating";
 export default Page;
 */
 
-/** Exercício: Rating via emoji (fácil) */
+/** Exercício: Rating via emoji (fácil) | (dificil) */
 const Page = () => {
   return (
   <div className="w-screen h-screen flex justify-center items-center">
-       <EmojiRating rate={5}/>
+       <EmojiRating rate={2}/>
   </div>
   );
 }
