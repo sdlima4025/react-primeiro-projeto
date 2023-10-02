@@ -4,7 +4,7 @@
     hour12: false
   }).format();
 
-  const hour = new Date().getHours();
+const hour = new Date().getHours();
  testando as horas 
    const hour = 15;
 
@@ -29,9 +29,11 @@
 export default Page;
 */
 
+import { EmojiRating } from "@/components/EmojiRating";
+
 /** Exercício: Greeting condicional 2 
  * 
-*/
+
   const Page = () => {
   const fullTime = new Intl.DateTimeFormat('pt-BR',{
     timeStyle:'short',
@@ -51,5 +53,17 @@ export default Page;
   </div>
   );
 };
+
+export default Page;
+*/
+
+/** Exercício: Rating via emoji (fácil) */
+const Page = () => {
+  return (
+  <div className="w-screen h-screen flex justify-center items-center">
+       <EmojiRating rate={5}/>
+  </div>
+  );
+}
 
 export default Page;
