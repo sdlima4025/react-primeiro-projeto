@@ -136,27 +136,28 @@ import { FormEvent } from "react";
   </div>
   );
 }
-export default Page */
+*/
 
 /** O que é um state?
- *
+ * handleClickButton
  * */
 
 "use client";
 
-const Page = () => {
-  let count = 0;
+import { useState } from "react";
 
-  const handleClickButton = () => {
-    count++;
-    console.log(count);
+const Page = () => {
+  const [count, setCount] = useState(1);
+  
+  const handleBtnClick = () => {
+    setCount(count + 2);
+    
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center">
+    <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
       <p>{count}</p>
-      <button onClick={handleClickButton} className="bg-blue-500 p-3">
-        +1
+      <button onClick={handleBtnClick} className="bg-blue-700 text-white p-3 rounded-md">+2
       </button>
     </div>
   );
