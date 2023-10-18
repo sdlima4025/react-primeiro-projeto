@@ -140,7 +140,7 @@ import { FormEvent } from "react";
 
 /** O que é um state?
  * handleClickButton
- * */
+ * 
 
 "use client";
 
@@ -163,4 +163,44 @@ const Page = () => {
   );
 };
 
+export default Page; */
+
+/** Atualizando Objetos em States */
+"use client";
+
+import { Person } from "@/types/Person";
+import { useState } from "react";
+
+const Page = () => {
+  const [fullName, setFullName] = useState<Person>({name: 'Sérgio', lastName: 'Lima'});
+  const handleClearInput = () => {
+    setFullName({...fullName, name: '', lastName: ''})
+  }
+  return (
+    <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+     
+     <input
+     type="text"
+     placeholder="Nome"
+     className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+     value={fullName.name} 
+     onChange={e => setFullName({...fullName, name: e.target.value})}
+     />
+
+     <input
+     type="text"
+     placeholder="sobreNome"
+     className="border border-black p-3 text-2xl text-black rounded-md mb-3"
+     value={fullName.lastName}
+     onChange={e => setFullName({...fullName, lastName: e.target.value})}
+     />
+
+
+     <p>Meu nome é:</p>
+     <p>{fullName.name} {fullName.lastName}</p>
+
+     <button onClick={handleClearInput}>Limpar Inputs</button>
+    </div>
+  )
+}
 export default Page;
