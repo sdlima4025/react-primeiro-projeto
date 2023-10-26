@@ -37,7 +37,7 @@
 //         ))}
 //       </section>
 
-//       {showModal && 
+//       {showModal &&
 //       <Modal image={imageOfModal} closeModal={closeModal}/>
 //       }
 //     </div>
@@ -45,16 +45,28 @@
 // };
 // export default Page;
 
+/** Exercicio: Quiz */
 
 "use client";
 
-
 const Page = () => {
-  return(
-    <div className="w-full h-screen">
+  const title = "Quiz Biblico";
 
+  return (
+    <div className="w-full h-screen flex justify-center items-center bg-blue-600">
+      <div className="w-full max-w-xl rounded-md bg-white text-black shadow shadow-black">
+        <div className="p-5 font-bold text-2xl shadow shadow-gray-300">
+          {title}
+        </div>
+        <div className="p-5">
+          ...
+        </div>
+        <div className="p-5 text-center border-t border-gray-300">
+          ...
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Page;
