@@ -1,206 +1,60 @@
-/** const Page = () => {
-  const fullTime = new Intl.DateTimeFormat('pt-BR',{
-    timeStyle:'short',
-    hour12: false
-  }).format();
+// /** GALERIA DE FOTOS */
 
-const hour = new Date().getHours();
- testando as horas 
-   const hour = 15;
+// "use client";
 
-  let greeting = '0';
+// import { PhotoItem } from "@/components/PhotoItem";
+// import { photoList } from "@/data/photoList";
+// import { useState } from "react";
+// import { Photo } from '../types/Photo';
+// import { Modal } from "@/components/Modal";
 
-  if(hour >=0 && hour < 12) {
-    greeting = 'Bom Dia 😀';
-  } else if (hour >= 12 && hour < 18) {
-    greeting = 'Boa Tarde 😎';
-  } else if(hour >= 18 && hour <= 24)  {
-    greeting = 'Boa Noite 😴';
-  }
-  return (
-  <div className="w-screen h-screen flex flex-col justify-center items-center
-  text-white bg-gradient-to-r from-sky-500 to-indigo-500">
-      <div className="text-9xl">{fullTime}</div>
-      <div className="text-5xl font-bold">{greeting}</div>
-  </div>
-  );
-};
+// const Page = () => {
+//   const [showModal, setShowModal] = useState(false);
+//   const [imageOfModal, setImageOfModal] = useState('');
+//   const openModal = (id: number) => {
+//     const photo = photoList.find(item => item.id === id);
+//     if(photo){
+//       setImageOfModal(photo.url);
+//       setShowModal(true);
+//     }
+//   }
 
-export default Page;
-*/
+//   const closeModal = () => {
+//     setShowModal(false);
+//   }
+//   return (
+//     <div className="mx-2">
+//       <h1 className="text-center text-3xl font-bold my-10">
+//         Modal de Fotos
+//       </h1>
+//       <section className="container max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//         {photoList.map((item) => (
+//           <PhotoItem
+//             key={item.id}
+//             photo={item}
+//             onClick={() => openModal(item.id)}
+//           />
+//         ))}
+//       </section>
 
-//import { EmojiRating } from "@/components/EmojiRating";
+//       {showModal && 
+//       <Modal image={imageOfModal} closeModal={closeModal}/>
+//       }
+//     </div>
+//   );
+// };
+// export default Page;
 
-/** Exercício: Greeting condicional 2 
- * 
 
-  const Page = () => {
-  const fullTime = new Intl.DateTimeFormat('pt-BR',{
-    timeStyle:'short',
-    hour12: false
-  }).format();
+"use client";
 
-  const hour = new Date().getHours();
- 
-  return (
-  <div className="w-screen h-screen flex flex-col justify-center items-center
-  text-white bg-gradient-to-r from-sky-500 to-indigo-500">
-      <div className="text-9xl">{fullTime}</div>
-      <div className="text-5xl font-bold"></div>
-      {hour >= 0 && hour < 12 && 'Bom Dia 😀'}
-      {hour >= 12 && hour < 18 && 'Boa Tarde 😎'}
-      {hour >= 18 && hour <= 23 && 'Boa Noite 😴'}
-  </div>
-  );
-};
-
-export default Page;
-*/
-
-/** Exercício: Rating via emoji (fácil) | (dificil) 
-
-import { StudentTable } from "@/components/StudentTable";
-import { students } from "@/data/students";
 
 const Page = () => {
-  return (
-  <div className="container mx-auto ">
-    <h1 className="text-5xl mb-5">Boletim Escolar 2023</h1>
-    <StudentTable students={students}/>
-  </div>
-  );
-}
+  return(
+    <div className="w-full h-screen">
 
-export default Page;
-*/
-
-/** Adicionando evento de clique 
-"use client"; // server component
-
- const Page = () => {
-  // Evento de click com arrow function
-  const handleButtonClick = () => {
-    alert('Funcionou! 4');
-  }
-  return (
-  <div className="w-screen h-screen flex justify-center items-center">
-    <button onClick={handleButtonClick} className="p-3 bg-blue-700 text-white rounded-md">Clique Aqui</button>
-  </div>
-  );
-}
-
-export default Page; */
-
-/** Passando Evento via Props 
-"use client";
-import { CustomBotton } from "@/components/CustomBotton";
-
- // server component
-
- const Page = () => {
-  // Evento de click com arrow function
-  const handleButton1 = () => alert('Funcionou 1!');
-  const handleButton2 = () => alert('Funcionou 2!');
-  const handleButton3 = () => alert('Funcionou 3!');
-  
-  return (
-  <div className="w-screen h-screen flex justify-center items-center">
-    <CustomBotton label="Clique Aqui!" onClick={handleButton1}/>
-    <CustomBotton label="Clique Aqui!" onClick={handleButton2}/>
-    <CustomBotton label="Clique Aqui!" onClick={handleButton3}/>
-  </div>
-  );
-}
-
-export default Page; */
-
-/** Usando preventDefault 
-
-"use client";
-
-import { FormEvent } from "react";
-
- const Page = () => {
-
-  const handleFormSubmit = (event:FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    alert('Opa mandando...');
-  }
-  return (
-  <div className="w-screen h-screen flex flex-col justify-center items-center">
-    <h1 className="text-5xl mb-3">Form Login</h1>
-    <form onSubmit={handleFormSubmit}>
-      <input type="text" />
-      <input type="submit" value='Enviar' />
-    </form>
-  </div>
-  );
-}
-*/
-
-/** O que é um state?
- * handleClickButton
- * 
-
-"use client";
-
-import { useState } from "react";
-
-const Page = () => {
-  const [count, setCount] = useState(1);
-  
-  const handleBtnClick = () => {
-    setCount(count + 2);
-    
-  };
-
-  return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
-      <p>{count}</p>
-      <button onClick={handleBtnClick} className="bg-blue-700 text-white p-3 rounded-md">+2
-      </button>
     </div>
   );
-};
-
-export default Page; */
-
-/** Atualizando Objetos em States */
-"use client";
-
-import { Person } from "@/types/Person";
-import { useState } from "react";
-
-const Page = () => {
-  const [fullName, setFullName] = useState<Person>({name: 'Sérgio', lastName: 'Lima'});
-  const handleClearInput = () => {
-    setFullName({...fullName, name: '', lastName: ''})
-  }
-  return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
-     
-     <input
-     type="text"
-     placeholder="Nome"
-     className="border border-black p-3 text-2xl text-black rounded-md mb-3"
-     value={fullName.name} 
-     onChange={e => setFullName({...fullName, name: e.target.value})}
-     />
-
-     <input
-     type="text"
-     placeholder="sobreNome"
-     className="border border-black p-3 text-2xl text-black rounded-md mb-3"
-     value={fullName.lastName}
-     onChange={e => setFullName({...fullName, lastName: e.target.value})}
-     />
-
-
-     <p>Meu nome é:</p>
-     <p>{fullName.name} {fullName.lastName}</p>
-
-     <button onClick={handleClearInput}>Limpar Inputs</button>
-    </div>
-  )
 }
+
 export default Page;
