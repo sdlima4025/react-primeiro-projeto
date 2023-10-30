@@ -50,16 +50,29 @@
 "use client";
 
 import { QuestionItem } from "@/components/QuestionItem";
-import { questions } from '@/data/questions';
+import { Results } from "@/components/Results";
+import { questions, question } from '@/data/questions';
 import { useState } from "react";
 
 const Page = () => {
+  const [answers, setAnswers] = useState<number[]>([]);
   const [currentQuestion, setcurrentQuestion] = useState(0);
+  const [showResult,setShowResult] = useState(false);
+
   const title = "Quiz Biblico";
 
-  const handleAnswer = (answer: number) => {
-
+  const loadNextQuestion = () => {
+   if (questions[currentQuestion + 1]) {
+    setcurrentQuestion(currentQuestion + 1);
+   } else {
+    setShowResult(true);
+   }
   }
+
+  const handleAnswer = (answer: number) => {
+    setAnswers([...answers, answer]);
+    loadNextQuestion();
+   }
   return (
     <div className="w-full h-screen flex justify-center items-center bg-blue-600">
       <div className="w-full max-w-xl rounded-md bg-white text-black shadow shadow-black">
@@ -67,14 +80,24 @@ const Page = () => {
           {title}
         </div>
         <div className="p-5">
+          {!showResult && 
           <QuestionItem
             question={questions[currentQuestion]}
             count={currentQuestion + 1}
             onAnswer={handleAnswer}
           />
+        }
+        {showResult && 
+        <Results questions={questions} answers={answers} />
+        }
         </div>
         <div className="p-5 text-center border-t border-gray-300">
-        {currentQuestion + 1} de {questions.length} pergunta{questions.length === 1 ? '' : 's'}
+          {!showResult && 
+          `${currentQuestion + 1} de ${questions.length} pergunta${questions.length === 1 ? '' : 's'}`
+          }
+          {showResult && 
+            <button className="px-2 py-2 rounded-md bg-blue-800 text-white">Reiniciar Quiz</button>
+          }
         </div>
       </div>
     </div>

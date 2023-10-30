@@ -9,11 +9,17 @@ type Props = {
 
 export const QuestionItem = ({ question, count, onAnswer }: Props) => {
     const [selectedAnswer, setSelectAnswer] = useState<number | null>(null);
+    const [check, setCheck] = useState<boolean>(false)
 
-    const checkQuestion = (key:number) => {
+    const checkQuestion = (key: number) => {
         if(selectedAnswer === null) {
             setSelectAnswer(key);
-            onAnswer(key);
+            setCheck(true)
+            setTimeout(() => {
+                onAnswer(key);
+                setSelectAnswer(null);
+                setCheck(false)
+            }, 2000);
         }
     }
   return (
@@ -23,7 +29,7 @@ export const QuestionItem = ({ question, count, onAnswer }: Props) => {
       </div>
       <div>
         {question.options.map((item, key) => (
-          <div 
+        <div 
           key={key}
           onClick={() => checkQuestion(key)} 
           className= {`border px-3 py-2 rounded-md text-lg mb-4  bg-blue-100 border-blue-300 
@@ -34,7 +40,9 @@ export const QuestionItem = ({ question, count, onAnswer }: Props) => {
           `}
           
           
-          >{item}
+          >
+            {item}
+           { check && selectedAnswer === key && <div className="text-green-500"> ✔ </div>}
           </div>
         ))}
       </div>
