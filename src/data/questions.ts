@@ -1,4 +1,4 @@
-import { Question } from '../types/Question';
+import { Question } from '@/types/Question';
 
 export const questions: Question[] = [
     {
@@ -7,8 +7,19 @@ export const questions: Question[] = [
             'Senhor',
             'Todo Poderoso',
             'Altissimo',
-            'YHVH'
+            'Jeová'
         ],
         answer: 3
+    },
+    {
+        questions: 'Qual o Nome do filho de Deus?',
+        options: [
+            'Jozé',
+            'João',
+            'Jesus',
+            'Judas'
+        ],
+        answer:2
+
     }
 ];
