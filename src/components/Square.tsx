@@ -1,8 +1,15 @@
+import { useEffect } from "react";
+
 export const Square = () => {
-  return (
-    <div className="w-52 h-52 bg-orange-700 text-white"></div>
-  );
-}
+  useEffect(() => {
+    window.addEventListener('scroll', () => {});
+    console.log('Adicionou Event')
 
+    return () => {
+      window.removeEventListener('scroll', () => {});
+      console.log('Limpou Event')
+    }
+  });
 
-// export default Quadrado;
+  return <div className="w-52 h-52 bg-orange-700 text-white"></div>;
+};

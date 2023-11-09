@@ -1,23 +1,59 @@
-"use client"
+// "use client"
+// import { Square } from "@/components/Square";
+// import { useState } from "react";
 
-import { VideoPlayer } from "@/components/VideoPlayer";
+// const Page = () => {
+// const [show, setShow] = useState(false);
+//   return(
+//     <div className="">
+//       <button onClick={() => setShow(!show)}>Mostrar/ocultar</button>
+
+//       {show && <Square/>}
+//     </div>
+//   );
+// }
+
+// export default Page;
+
+"use client"
+import { Item } from "@/types/Item";
 import { useState } from "react";
 
 const Page = () => {
-const [playing, setPlaying] = useState(false);
+const [list, setList] = useState<Item[]>([]);
 
+const addNewItem = (text: string) => {
+  setList([...list, {
+    id: list.length, 
+    text,
+    done: false
+  }]);
+}
 
+const editItemText = (id: number, newText: string) => {
+  setList(
+    list.map(t => {
+      if(t.id === id) t.text = newText;
+      return t;
+    })
+  );
+}
+
+const toggleItem = (id: number) => {
+  setList(
+    list.map(t => {
+      if(t.id === id) t.done = !t.done;
+      return t;
+    })
+  );
+}
+
+const removeItem = (id:number) => {
+  setList(list.filter(t=> t.id !== id));
+}
   return(
     <div className="">
-      <div className="border border-white p-3 mb-4">
-        <p className="text-2xl text-blue-400 mb-3">{playing ? 'RODANDO' : 'PAUSANDO'}</p>
-        <button className="bg-blue-400 rounded-md p-3 text-black" onClick={() => setPlaying(!playing)}>Play/Stop</button>
-      </div>
-        <VideoPlayer
-          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-          isPlaying={playing}
-        />
-
+  
     </div>
   );
 }
