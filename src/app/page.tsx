@@ -1,59 +1,45 @@
-// "use client"
-// import { Square } from "@/components/Square";
-// import { useState } from "react";
+"use client";
 
-// const Page = () => {
-// const [show, setShow] = useState(false);
-//   return(
-//     <div className="">
-//       <button onClick={() => setShow(!show)}>Mostrar/ocultar</button>
-
-//       {show && <Square/>}
-//     </div>
-//   );
-// }
-
-// export default Page;
-
-"use client"
-import { Item } from "@/types/Item";
-import { useState } from "react";
+import { listReducer } from "@/reducers/listReducer";
+import { useReducer, useState } from 'react';
 
 const Page = () => {
-const [list, setList] = useState<Item[]>([]);
+  const [list, dispatch] = useReducer(listReducer, []);
+  const [addField, setAddField] = useState('');
 
-const addNewItem = (text: string) => {
-  setList([...list, {
-    id: list.length, 
-    text,
-    done: false
-  }]);
-}
+  const handleAddButton = () => {
+    if(addField.trim() === '') return false;
 
-const editItemText = (id: number, newText: string) => {
-  setList(
-    list.map(t => {
-      if(t.id === id) t.text = newText;
-      return t;
-    })
-  );
-}
+    dispatch({
+      type: 'add',
+      payload: {
+        text: addField.trim()
+      }
+    });
+    setAddField('');
+  }
 
-const toggleItem = (id: number) => {
-  setList(
-    list.map(t => {
-      if(t.id === id) t.done = !t.done;
-      return t;
-    })
-  );
-}
-
-const removeItem = (id:number) => {
-  setList(list.filter(t=> t.id !== id));
-}
-  return(
-    <div className="">
-  
+  return (
+    <div className="container mx-auto">
+      <h1 className="text-center text-4xl my-4">Lista de Tarefas</h1>
+      <div className="max-w-2xl mx-auto flex rounded-md bg-gray-900 border border-gray-400 p-4 my-4">
+        <input 
+        type="text"
+        className=" flex-1 rounded-md border border-white p-3 bg-transparent text-white outline-none"
+        placeholder="Digite um item"
+        value={addField}
+        onChange={e => setAddField(e.target.value)}
+        />
+        <button
+        className="p-4"
+        onClick={handleAddButton}
+        >ADICIONAR</button>
+      </div>
+        <ul>
+          {list.map(item => (
+            <li key={item.id}>{item.text}</li>
+          ))}
+        </ul>
     </div>
   );
 }
